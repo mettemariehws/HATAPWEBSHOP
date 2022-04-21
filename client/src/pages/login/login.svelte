@@ -1,5 +1,6 @@
 <script>
   import { navigate } from "svelte-navigator";
+  import { toast } from "@zerodevx/svelte-toast";
 
   let loginUser = {};
   let errorMessage = "";
@@ -14,19 +15,51 @@
     });
     errorMessage = info.text();
     if (info.status === 200) {
-      navigate("/userprofile", {replace:true});
+      toast.push("YES! Your credentials were approved for login");
+      navigate("/userprofile", { replace: true });
+    } else {
+      toast.push("OBS! You credentials were not correct, try again!", {
+        theme: {
+          "--toastBackground": "#F56565",
+          "--toastBarBackground": "#C53030",
+        },
+      });
     }
   }
 
   async function signUp() {
-    const info = await fetch(`/api/signup`, {
-      headers: {
-        "content-type": "application/json",
-      },
-      method: "POST",
-      body: JSON.stringify(loginUser),
-    });
-  }
+    console.log("nu er du før fetch")
+    const res = await fetch(`/api/signup`, {
+        headers: {
+          "content-type": "application/json",
+        },
+        method: "POST",
+        body: JSON.stringify(loginUser),
+      });
+      console.log("Nu er du udenfor if")
+      errorMessage = await res.text();
+      if (res.status === 200) {
+        console.log("Nu er du i if statement")
+        errorMessage = "";
+        setTimeout(() => {
+          toast.push("Signup was a success. You can now login");
+          navigate("/", { replace: true });
+        }, 1500);
+      }
+    }
+   
+  // async function signUp() {
+  //   const res = await fetch(`/api/signup`, {
+  //     headers: {
+  //       "content-type": "application/json",
+  //     },
+  //     method: "POST",
+  //     body: JSON.stringify(loginUser),
+  //   });
+  //   if(res.status === 200){
+  //     toast.push("Woop Woop, you are signed up! You can now login to your page");
+  //   }
+  // }
 
 </script>
 
