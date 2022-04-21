@@ -36,11 +36,9 @@
         method: "POST",
         body: JSON.stringify(loginUser),
       });
-      console.log("Nu er du udenfor if")
-      errorMessage = await res.text();
+      console.log("Nu er du før if")
       if (res.status === 200) {
         console.log("Nu er du i if statement")
-        errorMessage = "";
         setTimeout(() => {
           toast.push("Signup was a success. You can now login");
           navigate("/", { replace: true });
@@ -76,7 +74,7 @@
   <button type="button" class="login-button" on:click={() => login()}
     >Login</button
   >
-  <button type="button" class="signup-button" on:click={() => signUp()}
+  <button type="button" class="signup-button" on:click={signUp()}
     >Sign up</button
   >
 </main>

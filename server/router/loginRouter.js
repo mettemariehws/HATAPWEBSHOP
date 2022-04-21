@@ -7,7 +7,7 @@ const router = Router();
 
 
 //laver api fordi ellers kan du ikke sync 
-//async skal du bruge for at fetche data læs op på deT!!!!
+//async er så det hele ikke kører på samme tid 
 
 router.post("/api/login", async (req, res) => {
     const {username, password } = req.body;
@@ -32,7 +32,7 @@ router.post("/api/login", async (req, res) => {
   });
 
   router.post("/api/logout", (req, res) =>{
-      if(req.session.loggedIn){ //check this 
+      if(req.session.loggedIn){ //loggedin er en function der tilhører sessions
         req.session.loggedIn = false;
       }
     });

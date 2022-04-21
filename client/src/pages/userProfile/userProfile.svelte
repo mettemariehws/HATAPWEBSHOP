@@ -3,7 +3,7 @@
 
   async function logout() {
     const response = await fetch(`/api/logout`);
-    navigate("/", { replace: true });
+    navigate("/login", { replace: true });
   }
 </script>
 
@@ -14,6 +14,6 @@
 
   <div>
     <p>Some text</p>
-    <button class="logout-button" on:click={logout}>Log out</button>
+    <button class="logout-button" on:click={logout()}>Log out</button>
   </div>
 </main>
