@@ -15,8 +15,8 @@ await db.exec(`CREATE TABLE IF NOT EXISTS users (
 );`);
 
 // seed
-if(isInDeleteMode) {
-    await db.run(`INSERT INTO users (username, password) VALUES ('Mette', 'Vuf123')`);
-};
+// if(isInDeleteMode) {
+//     await db.run(`INSERT INTO users (username, password) VALUES ('Mette', 'Vuf123')`);
+// };
 
 db.close();

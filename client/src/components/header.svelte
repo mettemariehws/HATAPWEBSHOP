@@ -1,6 +1,13 @@
 <script>
 	import { Router, Link } from "svelte-Navigator";
 
+	// async function loggedin_loggedout(){
+	// 	if (session === true){
+	// 		document.getElementById("user-btn").innerHTML("Log out")
+	// 	}else{
+	// 		document.getElementById("user-btn").
+	// 	}
+	// }
 
 </script>
 <Router>
@@ -20,7 +27,7 @@
 				<Link to="/about">CONTACT</Link>
 			</li>
 		</ul>
-		<Link to="/login">Go to login page</Link>
+			<Link to="/login">LOGIN & SIGN UP</Link>
 	</nav>
 
 </Router>
